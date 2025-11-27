@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.tsx
+import React, { useState } from 'react';
+import LoginForm from './components/auth/LoginForm';
+import Dashboard from './components/dashboard/Dashboard.tsx';
+import { User } from './types';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [currentView, setCurrentView] = useState<'login' | 'dashboard'>('login');
+
+  const handleLogin = (userData: User) => {
+    setUser(userData);
+    setCurrentView('dashboard');
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setCurrentView('login');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app">
+      {currentView === 'login' && <LoginForm onLogin={handleLogin} />}
+      {currentView === 'dashboard' && user && (
+        <Dashboard user={user} onLogout={handleLogout} />
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;
