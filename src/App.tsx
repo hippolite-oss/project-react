@@ -1,28 +1,46 @@
 // App.tsx
 import React, { useState } from 'react';
 import LoginForm from './components/auth/LoginForm';
-import Dashboard from './components/dashboard/Dashboard.tsx';
+import RegisterForm from './components/auth/RegisterForm';
+import Dashboard from './components/dashboard/Dashboard';
 import { User } from './types';
+
+type AuthView = 'login' | 'register';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [currentView, setCurrentView] = useState<'login' | 'dashboard'>('login');
+  const [authView, setAuthView] = useState<AuthView>('login');
 
   const handleLogin = (userData: User) => {
     setUser(userData);
-    setCurrentView('dashboard');
+  };
+
+  const handleRegister = (userData: User) => {
+    setUser(userData);
   };
 
   const handleLogout = () => {
     setUser(null);
-    setCurrentView('login');
+    setAuthView('login');
   };
+
+  if (user) {
+    return <Dashboard user={user} onLogout={handleLogout} />;
+  }
 
   return (
     <div className="app">
-      {currentView === 'login' && <LoginForm onLogin={handleLogin} />}
-      {currentView === 'dashboard' && user && (
-        <Dashboard user={user} onLogout={handleLogout} />
+      {authView === 'login' && (
+        <LoginForm 
+          onLogin={handleLogin} 
+          onSwitchToRegister={() => setAuthView('register')} 
+        />
+      )}
+      {authView === 'register' && (
+        <RegisterForm 
+          onRegister={handleRegister} 
+          onSwitchToLogin={() => setAuthView('login')} 
+        />
       )}
     </div>
   );
