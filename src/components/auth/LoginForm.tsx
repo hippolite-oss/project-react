@@ -4,9 +4,10 @@ import { User } from '../../types';
 
 interface LoginFormProps {
   onLogin: (user: User) => void;
+  onSwitchToRegister: () => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin, onSwitchToRegister }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -50,6 +51,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         </div>
         <button type="submit">Se connecter</button>
       </form>
+      <p>
+        Pas de compte? <button onClick={onSwitchToRegister}>S'inscrire</button>
+      </p>
     </div>
   );
 };
