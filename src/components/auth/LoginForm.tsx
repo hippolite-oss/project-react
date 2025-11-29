@@ -1,6 +1,6 @@
 // components/auth/LoginForm.tsx
 import React, { useState } from 'react';
-import { User } from '../../types';
+import type { User } from '../../types';
 
 interface LoginFormProps {
   onLogin: (user: User) => void;
