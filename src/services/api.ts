@@ -1,5 +1,6 @@
 // services/api.ts
-import { Student, Subject, Grade } from '../types';
+// services/api.ts
+import type { Student, Subject, Grade } from '../types';
 
 // Simulation de stockage local
 const STORAGE_KEYS = {
