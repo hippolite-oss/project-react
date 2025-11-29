@@ -1,6 +1,6 @@
 // components/dashboard/Dashboard.tsx
 import React, { useState } from 'react';
-import { User } from '../../types';
+import type { User } from '../../types';
 import StudentForm from '../forms/StudentForm';
 import SubjectForm from '../forms/SubjectForm';
 import GradeForm from '../forms/GradeForm';
