@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
 import Dashboard from './components/dashboard/Dashboard';
-import { User } from './types';
+import type { User } from './types';
 
 type AuthView = 'login' | 'register';
 
