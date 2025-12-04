@@ -1,6 +1,7 @@
 // components/forms/StudentForm.tsx
 import React, { useState } from 'react';
-import { Student } from '../../types';
+import type { Student } from '../../types';
+
 
 const StudentForm: React.FC = () => {
   const [student, setStudent] = useState<Omit<Student, 'matricule'>>({

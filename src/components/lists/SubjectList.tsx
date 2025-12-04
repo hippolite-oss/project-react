@@ -1,12 +1,13 @@
 // components/lists/SubjectList.tsx
-import React, { useState, useEffect } from 'react';
-import { Subject } from '../../types';
+import React, { useState, useEffect } from 'react'; 
+import type { Subject } from '../../types';
 import { api } from '../../services/api';
 
 const SubjectList: React.FC = () => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSubjects(api.getSubjects());
   }, []);
 

@@ -1,6 +1,7 @@
 // components/forms/SubjectForm.tsx
 import React, { useState } from 'react';
-import { Subject } from '../../types';
+import type { Subject } from '../../types';
+
 import { api } from '../../services/api';
 
 const SubjectForm: React.FC = () => {

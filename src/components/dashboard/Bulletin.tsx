@@ -1,6 +1,6 @@
 // components/dashboard/Bulletin.tsx
 import React, { useState } from 'react';
-import { Student, Grade, Subject } from '../../types';
+import type { Student, Grade, Subject } from '../../types';
 
 const Bulletin: React.FC = () => {
   const [selectedStudent, setSelectedStudent] = useState<string>('');

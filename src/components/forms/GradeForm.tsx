@@ -1,6 +1,6 @@
 // components/forms/GradeForm.tsx
 import React, { useState, useEffect } from 'react';
-import { Grade, Student, Subject } from '../../types';
+import type { Grade, Student, Subject } from '../../types';
 import { api } from '../../services/api';
 
 const GradeForm: React.FC = () => {
@@ -14,6 +14,7 @@ const GradeForm: React.FC = () => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStudents(api.getStudents());
     setSubjects(api.getSubjects());
   }, []);

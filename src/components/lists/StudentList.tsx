@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 // components/lists/StudentList.tsx
 import React, { useState, useEffect } from 'react';
-import { Student } from '../../types';
+import  { type Student } from '../../types';
 import { api } from '../../services/api';
 
 const StudentList: React.FC = () => {
